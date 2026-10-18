@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services.xserver = {
@@ -17,5 +17,13 @@
     touchpad.naturalScrolling = true;
   };
 
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.cups-brother-dcpt310 ];
+  };
+
+  hardware.sane = {
+    enable = true;
+    brscan4.enable = true;
+  };
 }

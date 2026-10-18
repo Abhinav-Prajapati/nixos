@@ -4,10 +4,11 @@
   users.users."abhinav" = {
     isNormalUser = true;
     description = "Abhinav";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "scanner" "lp" ];
     shell = pkgs.fish;
     packages = with pkgs; [
       kdePackages.kate
+      kdePackages.skanpage
     ];
   };
 
