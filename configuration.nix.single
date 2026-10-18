@@ -129,8 +129,6 @@
   };
 
   programs.fish.enable = true;
-  programs.starship.enable = true;
-
   # ───────────────────── Packages ─────────────────────
   nixpkgs.config.allowUnfree = true;
 

@@ -5,12 +5,6 @@
 
   programs.firefox.enable = true;
 
-  environment.etc."gitconfig".text = ''
-    [user]
-      email = abhinav.is.dev@gmail.com
-      name = Abhinav
-  '';
-
   environment.systemPackages = with pkgs; [
     # Apps
     brave
@@ -22,10 +16,5 @@
     curl
     unzip
 
-    # Terminal tools
-    neovim
-    tmux
-    eza
-    zoxide
   ];
 }

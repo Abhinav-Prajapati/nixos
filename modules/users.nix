@@ -11,7 +11,6 @@
     ];
   };
 
-  # Shell & prompt
+  # Fish is required here because it is the user's login shell.
   programs.fish.enable = true;
-  programs.starship.enable = true;
 }

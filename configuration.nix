@@ -13,6 +13,8 @@
     ./modules/audio.nix
     ./modules/gaming.nix
     ./modules/users.nix
+    ./modules/fonts.nix
+    ./modules/home-manager.nix
     ./modules/packages.nix
   ];
 
