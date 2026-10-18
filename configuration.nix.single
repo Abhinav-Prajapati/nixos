@@ -1,0 +1,156 @@
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  system.stateVersion = "26.05";
+
+  # ───────────────────────── Boot ─────────────────────────
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # ─────────────────── Locale & Time ───────────────────
+  time.timeZone = "Asia/Kolkata";
+
+  i18n.defaultLocale = "en_IN";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS        = "en_IN";
+    LC_IDENTIFICATION = "en_IN";
+    LC_MEASUREMENT    = "en_IN";
+    LC_MONETARY       = "en_IN";
+    LC_NAME           = "en_IN";
+    LC_NUMERIC        = "en_IN";
+    LC_PAPER          = "en_IN";
+    LC_TELEPHONE      = "en_IN";
+    LC_TIME           = "en_IN";
+  };
+
+  # ─────────────── Networking & Bluetooth ───────────────
+  networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  # ───────────────────── Memory ─────────────────────
+  zramSwap = {
+    enable = true;
+    memoryPercent = 100;   # compressed swap, up to the size of your RAM
+  };
+
+  systemd.oomd.enable = true;   # kills runaway processes before the system freezes
+
+  # ─────────── Graphics (Intel + NVIDIA PRIME) ───────────
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;   # for Steam / Wine / 32-bit apps
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # RTX 3050 (Ampere) supports the open kernel module. Set true to try it.
+    open = false;
+
+    powerManagement = {
+      enable = false;
+      finegrained = false;
+    };
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;   # provides the `nvidia-offload` command
+      };
+      # From lspci: 00:02.0 (Intel) and 01:00.0 (NVIDIA)
+      intelBusId  = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
+  # ─────────────────── Desktop ───────────────────
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+  };
+
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  services.libinput = {
+    enable = true;
+    touchpad.naturalScrolling = true;
+  };
+
+  services.printing.enable = true;
+
+  # ───────────────────── Audio ─────────────────────
+  services.pulseaudio.enable = false;   # PipeWire replaces it
+  security.rtkit.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # ───────────────────── Gaming ─────────────────────
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];   # Proton-GE
+    extraPackages = [ pkgs.pulseaudio ];            # provides pactl
+  };
+
+  programs.gamemode.enable = true;
+
+  # ───────────────── Users & Shell ─────────────────
+  users.users."abhinav" = {
+    isNormalUser = true;
+    description = "Abhinav";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
+    packages = with pkgs; [
+      kdePackages.kate
+    ];
+  };
+
+  programs.fish.enable = true;
+  programs.starship.enable = true;
+
+  # ───────────────────── Packages ─────────────────────
+  nixpkgs.config.allowUnfree = true;
+
+  programs.firefox.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    # Apps
+    brave
+    zed-editor
+
+    # CLI essentials
+    git
+    wget
+    curl
+    unzip
+
+    # Terminal tools
+    neovim
+    tmux
+    eza
+    zoxide
+  ];
+}
