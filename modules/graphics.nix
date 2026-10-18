@@ -33,4 +33,8 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
+  # --- Wayland: render the desktop on the NVIDIA GPU (card0) ---
+  # card0 owns the HDMI port. The first device listed is the primary renderer.
+  environment.sessionVariables.KWIN_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
 }
