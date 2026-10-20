@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  services.xserver = {
-    enable = true;
-  };
+  services.xserver.enable = true;
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -12,13 +10,17 @@
     touchpad.naturalScrolling = true;
   };
 
-  services.printing = {
+  security.rtkit.enable = true;
+
+  services.pipewire = {
     enable = true;
-    drivers = [ pkgs.cups-brother-dcpt310 ];
+    alsa.enable = true;
+    pulse.enable = true;
   };
 
-  hardware.sane = {
-    enable = true;
-    brscan4.enable = true;
-  };
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono inter ];
+
+  programs.partition-manager.enable = true;
+  programs.firefox.enable = true;
+  environment.systemPackages = with pkgs; [ brave zed-editor libreoffice scrcpy ];
 }

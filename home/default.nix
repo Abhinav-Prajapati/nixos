@@ -4,7 +4,7 @@
   home.stateVersion = "26.05";
 
   programs.fish.enable = true;
-  home.file.".config/fish/conf.d/10-user-config.fish".source = ./config/fish/config.fish;
+  home.file.".config/fish/conf.d/10-user-config.fish".source = ./fish.fish;
 
   programs.starship = {
     enable = true;
@@ -44,7 +44,7 @@
     plugins = [
       {
         plugin = pkgs.tmuxPlugins.tmux-nova;
-        extraConfig = builtins.readFile ./config/tmux/tmux.conf;
+        extraConfig = builtins.readFile ./tmux.conf;
       }
     ];
   };
@@ -69,6 +69,8 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    kdePackages.kate
+    kdePackages.skanpage
   ];
 
   programs.git = {
