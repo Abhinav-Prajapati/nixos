@@ -37,7 +37,7 @@ for c in /sys/class/drm/card[0-9]; do
   fi
 done
 
-[ -z "$nv" ] && exit 0
+[ -z "$nv" ] && return 0
 
 for s in /sys/class/drm/"$nvname"-HDMI-A-*/status; do
   if [ "$(cat "$s" 2>/dev/null)" = "connected" ]; then
