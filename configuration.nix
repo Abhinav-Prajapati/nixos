@@ -8,6 +8,7 @@
     ./modules/locale.nix
     ./modules/networking.nix
     ./modules/memory.nix
+    ./modules/webcam.nix
     ./modules/graphics.nix
     ./modules/desktop.nix
     ./modules/audio.nix
