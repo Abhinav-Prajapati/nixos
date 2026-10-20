@@ -30,7 +30,4 @@
     };
   };
 
-  # NVIDIA renders the desktop, so HDMI is driven directly by the dGPU.
-  # Check card numbers with `ls -l /dev/dri/by-path/` (card0 = NVIDIA on your machine)
-  environment.sessionVariables.KWIN_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
 }
