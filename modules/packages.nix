@@ -3,7 +3,10 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  programs.partition-manager.enable = true;
+
   programs.firefox.enable = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.systemPackages = with pkgs; [
     # Apps
@@ -15,6 +18,9 @@
     wget
     curl
     unzip
+
+    pkgs.libreoffice
+    pkgs.scrcpy
 
   ];
 }
