@@ -4,6 +4,7 @@
   home.stateVersion = "26.05";
 
   programs.fish.enable = true;
+  home.shell.enableNushellIntegration = false;
   home.file.".config/fish/conf.d/10-user-config.fish".source = ./fish.fish;
 
   programs.starship = {
@@ -13,11 +14,6 @@
       add_newline = false;
       format = "[ ](blue)$directory$git_branch$character";
     };
-  };
-
-  home.file.".config/plasma-workspace/env/gpu.sh" = {
-    source = ./scripts/gpu.sh;
-    executable = true;
   };
 
   programs.alacritty = {

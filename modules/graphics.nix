@@ -26,5 +26,6 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
-
+  # gpu.sh picks the primary renderer per login.
+  environment.etc."xdg/plasma-workspace/env/gpu.sh".source = ./gpu.sh;
 }

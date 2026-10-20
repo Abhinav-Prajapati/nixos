@@ -15,7 +15,7 @@
 #   - Checks /sys/class/drm/<nvidia-card>-HDMI-A-*/status for "connected"
 #   - Exports KWIN_DRM_DEVICES="<nvidia>:<other>" (first device = primary)
 #
-# After applying the Home Manager configuration, log out and back in after
+# After applying the NixOS configuration, log out and back in after
 # connecting or disconnecting HDMI. KWin reads this variable at session start.
 #
 # Verify:
@@ -24,7 +24,7 @@
 #   cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status    # "suspended" = dGPU asleep
 #
 # Debug:
-#   sh -x ~/.config/plasma-workspace/env/gpu.sh
+#   sh -xc '. /etc/xdg/plasma-workspace/env/gpu.sh'
 
 for c in /sys/class/drm/card[0-9]; do
   name=$(basename "$c")
