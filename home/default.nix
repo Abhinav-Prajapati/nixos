@@ -65,6 +65,10 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    brave
+    zed-editor
+    libreoffice
+    scrcpy
     kdePackages.kate
     kdePackages.skanpage
   ];
