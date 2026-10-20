@@ -27,17 +27,13 @@
         padding = { x = 4; y = 2; };
         dynamic_padding = true;
         opacity = 0.95;
-        decorations = "full";
       };
 
       font = {
         size = 12.0;
         normal = { family = "JetBrainsMono Nerd Font"; style = "Regular"; };
-        bold = { family = "JetBrainsMono Nerd Font"; style = "Bold"; };
-        italic = { family = "JetBrainsMono Nerd Font"; style = "Italic"; };
       };
 
-      scrolling.history = 10000;
       cursor.style = { shape = "Beam"; blinking = "On"; };
       selection.save_to_clipboard = true;
     };
@@ -55,18 +51,15 @@
 
   programs.zoxide = {
     enable = true;
-    enableFishIntegration = true;
     options = [ "--cmd cd" ];
   };
 
   programs.fzf = {
     enable = true;
-    enableFishIntegration = true;
   };
 
   programs.eza = {
     enable = true;
-    enableFishIntegration = true;
     icons = "auto";
     git = true;
   };

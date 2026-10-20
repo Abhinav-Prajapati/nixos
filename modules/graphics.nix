@@ -1,9 +1,8 @@
-{ config, ... }:
+{ ... }:
 
 {
   hardware.graphics = {
     enable = true;
-    enable32Bit = true; # Steam / Wine / 32-bit apps
   };
 
   # Needed so NixOS installs the NVIDIA driver (does not start an X server)
@@ -11,8 +10,6 @@
 
   hardware.nvidia = {
     modesetting.enable = true; # required for Wayland and HDMI under DRM
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
     open = false;
 
     powerManagement = {
