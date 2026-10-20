@@ -21,5 +21,4 @@
   fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono inter ];
 
   programs.partition-manager.enable = true;
-  programs.firefox.enable = true;
 }
