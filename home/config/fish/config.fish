@@ -3,6 +3,7 @@ set -g fish_greeting
 abbr --add g git
 abbr --add nrs 'sudo nixos-rebuild switch'
 abbr --add nconf 'zeditor ~/nixos'
+alias c clear
 
 # Start an interactive terminal in tmux, reusing an existing session.
 # Leave Zed's integrated terminal outside tmux.
