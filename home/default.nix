@@ -6,6 +6,15 @@
   programs.fish.enable = true;
   home.file.".config/fish/conf.d/10-user-config.fish".source = ./config/fish/config.fish;
 
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      add_newline = false;
+      format = "[ ](blue)$directory$git_branch$character";
+    };
+  };
+
   home.file.".config/plasma-workspace/env/gpu.sh" = {
     source = ./scripts/gpu.sh;
     executable = true;
