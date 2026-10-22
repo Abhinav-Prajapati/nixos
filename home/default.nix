@@ -74,6 +74,12 @@
   };
 
   programs.bat.enable = true;
+ 
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode;
+    profiles.default = import ./vscode-settings.nix { inherit pkgs; };
+  };
 
   home.packages = with pkgs; [
     git
@@ -90,7 +96,6 @@
     scrcpy
     kdePackages.kate
     kdePackages.skanpage
-    vscode
     nmap
   ];
 
