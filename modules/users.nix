@@ -7,11 +7,10 @@
     isNormalUser = true;
     description = "Abhinav";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
-  # Fish is required here because it is the user's login shell.
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;

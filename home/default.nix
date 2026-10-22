@@ -3,13 +3,12 @@
 {
   home.stateVersion = "26.05";
 
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
   home.shell.enableNushellIntegration = false;
-  home.file.".config/fish/conf.d/10-user-config.fish".source = ./fish.fish;
 
   programs.starship = {
     enable = true;
-    enableFishIntegration = true;
+    enableZshIntegration = true;
     settings = {
       add_newline = false;
       format = "[ ](blue)$directory$git_branch$character";
