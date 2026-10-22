@@ -21,6 +21,7 @@
   nixpkgs.config.allowUnfree = true;
 
   networking.networkmanager.enable = true;
+  virtualisation.docker.enable = true;
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_IN";
 
@@ -29,6 +30,4 @@
     memoryPercent = 100;
   };
   systemd.oomd.enableUserSlices = true;
-
-  environment.systemPackages = with pkgs; [ git wget unzip ];
 }

@@ -63,6 +63,12 @@
   programs.bat.enable = true;
 
   home.packages = with pkgs; [
+    git
+    wget
+    unzip
+    uv
+    docker
+    docker-compose
     ripgrep
     fd
     brave
@@ -71,6 +77,8 @@
     scrcpy
     kdePackages.kate
     kdePackages.skanpage
+    vscode
+    nmap
   ];
 
   programs.git = {

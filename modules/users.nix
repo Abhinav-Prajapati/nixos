@@ -6,7 +6,7 @@
   users.users."abhinav" = {
     isNormalUser = true;
     description = "Abhinav";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
   };
 
