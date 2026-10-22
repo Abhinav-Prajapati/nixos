@@ -3,7 +3,21 @@
 {
   home.stateVersion = "26.05";
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    enableCompletion = true;
+
+    plugins = [
+      {
+        name = "zsh-fzf-history-search";
+        src = pkgs.zsh-fzf-history-search;
+      }
+    ];
+
+    initContent = builtins.readFile ./zshrc;
+  };
   home.shell.enableNushellIntegration = false;
 
   programs.starship = {
@@ -11,7 +25,7 @@
     enableZshIntegration = true;
     settings = {
       add_newline = false;
-      format = "[ ](blue)$directory$git_branch$character";
+      format = "$directory$git_branch$character";
     };
   };
 
