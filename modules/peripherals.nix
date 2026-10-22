@@ -3,6 +3,8 @@
 {
   hardware.bluetooth.enable = true;
 
+  programs.wireshark.enable = true;
+
   services.printing = {
     enable = true;
     drivers = [ pkgs.cups-brother-dcpt310 ];

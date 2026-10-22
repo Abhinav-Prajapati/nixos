@@ -6,7 +6,7 @@
   users.users."abhinav" = {
     isNormalUser = true;
     description = "Abhinav";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" ];
     shell = pkgs.zsh;
   };
 

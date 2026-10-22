@@ -97,6 +97,8 @@
     kdePackages.kate
     kdePackages.skanpage
     nmap
+    bruno
+    beekeeper-studio
   ];
 
   programs.git = {
