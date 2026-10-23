@@ -1,4 +1,8 @@
 ### TMUX AUTO LOAD ON STARTUP
+alias y='yazi'
+alias c='clear'
+alias nixbuild='sudo nixos-rebuild switch'
+
 TMUX_DEFAULT_SESSION="titan"
 
 if [[ -o interactive && -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]] \

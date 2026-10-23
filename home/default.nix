@@ -88,6 +88,7 @@
     uv
     docker
     docker-compose
+    yazi
     ripgrep
     fd
     brave
